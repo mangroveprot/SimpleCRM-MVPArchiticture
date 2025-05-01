@@ -80,7 +80,7 @@ namespace SimpleCRM._Repositories
             {
                 connection.Open();
                 command.Connection = connection;
-                command.CommandText = "SELECT * FROM Products ORDER BY product_id DESC;";
+                command.CommandText = "SELECT * FROM Products ORDER BY product_name ASC;";
 
                 using (var reader = command.ExecuteReader())
                 {
@@ -114,7 +114,7 @@ namespace SimpleCRM._Repositories
                                         WHERE product_id = @productId 
                                            OR product_name LIKE @name + '%' 
                                            OR description LIKE '%' + @name + '%'
-                                        ORDER BY product_id DESC;";
+                                        ORDER BY product_name ASC;";
 
                 command.Parameters.Add("@productId", SqlDbType.Int).Value = productId;
                 command.Parameters.Add("@name", SqlDbType.NVarChar).Value = name;

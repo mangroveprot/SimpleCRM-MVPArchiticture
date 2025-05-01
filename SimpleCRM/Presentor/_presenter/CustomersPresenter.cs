@@ -129,6 +129,7 @@ namespace SimpleCRM.Presentor.Presenter
 
         private void AddNewCustomers(object? sender, EventArgs e)
         {
+            ClearViewFields();
             view.IsEdit = false;
         }
 

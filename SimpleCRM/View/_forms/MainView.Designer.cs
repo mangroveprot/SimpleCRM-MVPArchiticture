@@ -32,11 +32,13 @@
             btnProducts = new Button();
             btnOrders = new Button();
             btnCustomers = new Button();
+            btnUsers = new Button();
             panel1.SuspendLayout();
             SuspendLayout();
             // 
             // panel1
             // 
+            panel1.Controls.Add(btnUsers);
             panel1.Controls.Add(btnProducts);
             panel1.Controls.Add(btnOrders);
             panel1.Controls.Add(btnCustomers);
@@ -49,7 +51,7 @@
             // btnProducts
             // 
             btnProducts.Font = new Font("Segoe UI", 12F);
-            btnProducts.Location = new Point(12, 176);
+            btnProducts.Location = new Point(12, 233);
             btnProducts.Name = "btnProducts";
             btnProducts.Size = new Size(220, 43);
             btnProducts.TabIndex = 2;
@@ -59,7 +61,7 @@
             // btnOrders
             // 
             btnOrders.Font = new Font("Segoe UI", 12F);
-            btnOrders.Location = new Point(12, 116);
+            btnOrders.Location = new Point(12, 173);
             btnOrders.Name = "btnOrders";
             btnOrders.Size = new Size(220, 43);
             btnOrders.TabIndex = 1;
@@ -69,12 +71,22 @@
             // btnCustomers
             // 
             btnCustomers.Font = new Font("Segoe UI", 12F);
-            btnCustomers.Location = new Point(12, 53);
+            btnCustomers.Location = new Point(12, 110);
             btnCustomers.Name = "btnCustomers";
             btnCustomers.Size = new Size(220, 43);
             btnCustomers.TabIndex = 0;
             btnCustomers.Text = "Customers";
             btnCustomers.UseVisualStyleBackColor = true;
+            // 
+            // btnUsers
+            // 
+            btnUsers.Font = new Font("Segoe UI", 12F);
+            btnUsers.Location = new Point(12, 51);
+            btnUsers.Name = "btnUsers";
+            btnUsers.Size = new Size(220, 43);
+            btnUsers.TabIndex = 3;
+            btnUsers.Text = "Users";
+            btnUsers.UseVisualStyleBackColor = true;
             // 
             // MainView
             // 
@@ -95,5 +107,6 @@
         private Button btnCustomers;
         private Button btnOrders;
         private Button btnProducts;
+        private Button btnUsers;
     }
 }

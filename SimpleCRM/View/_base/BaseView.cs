@@ -119,5 +119,36 @@ namespace SimpleCRM.View._base
             tabControl.TabPages.Remove(detailsTab);
             tabControl.TabPages.Add(listTab);
         }
+
+        public void SetBindingSource(BindingSource bindingSource, DataGridView targetGrid)
+        {
+            targetGrid.DataSource = bindingSource;
+        }
+
+        public static T GetInstance<T>(Form parentContainer) where T : Form, new()
+        {
+            T instance;
+
+            var existing = Application.OpenForms.OfType<T>().FirstOrDefault();
+            if (existing == null || existing.IsDisposed)
+            {
+                instance = new T
+                {
+                    MdiParent = parentContainer,
+                    FormBorderStyle = FormBorderStyle.None,
+                    Dock = DockStyle.Fill
+                };
+            }
+            else
+            {
+                instance = existing;
+                if (instance.WindowState == FormWindowState.Minimized)
+                    instance.WindowState = FormWindowState.Normal;
+
+                instance.BringToFront();
+            }
+
+            return instance;
+        }
     }
 }

@@ -4,6 +4,7 @@ using SimpleCRM.Models;
 using SimpleCRM.Models._models;
 using SimpleCRM.Models._repositories;
 using SimpleCRM.Presentor;
+using SimpleCRM.Presentor.Presenter;
 using SimpleCRM.View;
 using SimpleCRM.View._interface;
 
@@ -23,7 +24,7 @@ namespace SimpleCRM
 
             string connectionString = ConfigurationManager.ConnectionStrings["SqlConnection"].ConnectionString;
             IMainView view = new MainView();
-            new MainPresentor(view, connectionString);
+            new MainPresenter(view, connectionString);
             Application.Run((Form)view);
         }
     }

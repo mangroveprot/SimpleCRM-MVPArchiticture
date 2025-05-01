@@ -1,6 +1,6 @@
 ﻿namespace SimpleCRM.View._forms
 {
-    partial class ProductView
+    partial class ProductsView
     {
         /// <summary>
         /// Required designer variable.
@@ -32,6 +32,8 @@
             productHeader = new Label();
             tabControl1 = new TabControl();
             productsListTab = new TabPage();
+            searchField = new TextBox();
+            searchBtn = new Button();
             productsDataTbl = new DataGridView();
             btnDelete = new Button();
             btnEdit = new Button();
@@ -52,8 +54,6 @@
             label3 = new Label();
             txt_productId = new TextBox();
             label2 = new Label();
-            searchField = new TextBox();
-            searchBtn = new Button();
             panel1.SuspendLayout();
             tabControl1.SuspendLayout();
             productsListTab.SuspendLayout();
@@ -67,7 +67,7 @@
             panel1.Controls.Add(productHeader);
             panel1.Location = new Point(1, 2);
             panel1.Name = "panel1";
-            panel1.Size = new Size(857, 105);
+            panel1.Size = new Size(857, 100);
             panel1.TabIndex = 2;
             // 
             // productHeader
@@ -75,7 +75,7 @@
             productHeader.Anchor = AnchorStyles.Left | AnchorStyles.Right;
             productHeader.AutoSize = true;
             productHeader.Font = new Font("Segoe UI", 15F);
-            productHeader.Location = new Point(35, 40);
+            productHeader.Location = new Point(35, 38);
             productHeader.Name = "productHeader";
             productHeader.Size = new Size(102, 35);
             productHeader.TabIndex = 0;
@@ -111,6 +111,24 @@
             productsListTab.TabIndex = 0;
             productsListTab.Text = "Products";
             productsListTab.UseVisualStyleBackColor = true;
+            // 
+            // searchField
+            // 
+            searchField.Anchor = AnchorStyles.Top | AnchorStyles.Left | AnchorStyles.Right;
+            searchField.Location = new Point(8, 28);
+            searchField.Name = "searchField";
+            searchField.Size = new Size(646, 27);
+            searchField.TabIndex = 12;
+            // 
+            // searchBtn
+            // 
+            searchBtn.Anchor = AnchorStyles.Top | AnchorStyles.Right;
+            searchBtn.Location = new Point(660, 28);
+            searchBtn.Name = "searchBtn";
+            searchBtn.Size = new Size(94, 29);
+            searchBtn.TabIndex = 11;
+            searchBtn.Text = "Search";
+            searchBtn.UseVisualStyleBackColor = true;
             // 
             // productsDataTbl
             // 
@@ -312,32 +330,14 @@
             label2.TabIndex = 0;
             label2.Text = "Product ID";
             // 
-            // searchField
-            // 
-            searchField.Anchor = AnchorStyles.Top | AnchorStyles.Left | AnchorStyles.Right;
-            searchField.Location = new Point(8, 28);
-            searchField.Name = "searchField";
-            searchField.Size = new Size(646, 27);
-            searchField.TabIndex = 12;
-            // 
-            // searchBtn
-            // 
-            searchBtn.Anchor = AnchorStyles.Top | AnchorStyles.Right;
-            searchBtn.Location = new Point(660, 28);
-            searchBtn.Name = "searchBtn";
-            searchBtn.Size = new Size(94, 29);
-            searchBtn.TabIndex = 11;
-            searchBtn.Text = "Search";
-            searchBtn.UseVisualStyleBackColor = true;
-            // 
-            // ProductView
+            // ProductsView
             // 
             AutoScaleDimensions = new SizeF(8F, 20F);
             AutoScaleMode = AutoScaleMode.Font;
             ClientSize = new Size(858, 679);
             Controls.Add(tabControl1);
             Controls.Add(panel1);
-            Name = "ProductView";
+            Name = "ProductsView";
             Text = "ProductView";
             panel1.ResumeLayout(false);
             panel1.PerformLayout();

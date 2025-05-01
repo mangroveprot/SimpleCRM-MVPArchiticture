@@ -1,6 +1,6 @@
 ﻿namespace SimpleCRM.View
 {
-    partial class CustomerView
+    partial class CustomersView
     {
         /// <summary>
         /// Required designer variable.

@@ -12,7 +12,7 @@ using SimpleCRM.View._interface;
 
 namespace SimpleCRM.View
 {
-    public partial class CustomerView : Form, ICustomerView
+    public partial class CustomersView : Form, ICustomerView
     {
         private string message;
         private bool isSuccessful;
@@ -29,7 +29,7 @@ namespace SimpleCRM.View
         public event EventHandler CancelEvent;
         public event EventHandler SaveEvent;
 
-        public CustomerView()
+        public CustomersView()
         {
             InitializeComponent();
             //AssociateAndRaiseViewEvents();
@@ -71,68 +71,6 @@ namespace SimpleCRM.View
                 baseView.Message = this.Message;
             };
         }
-
-        /*
-        private void AssociateAndRaiseViewEvents()
-        {
-            searchBtn.Click += delegate { SearchEvent?.Invoke(this, EventArgs.Empty); };
-            searchField.KeyDown += (s, e) =>
-            {
-                if (e.KeyCode == Keys.Enter)
-                    SearchEvent?.Invoke(this, EventArgs.Empty);
-            };
-
-            //add
-            addNewBtn.Click += delegate
-            {
-                AddNewEvent?.Invoke(this, EventArgs.Empty);
-                tabControl1.TabPages.Remove(customersListTab);
-                tabControl1.TabPages.Add(customerDetails);
-                customerDetails.Text = "Add New Customer";
-            };
-
-            //edit
-            editBtn.Click += delegate
-            {
-                EditEvent?.Invoke(this, EventArgs.Empty);
-                tabControl1.TabPages.Remove(customersListTab);
-                tabControl1.TabPages.Add(customerDetails);
-                customerDetails.Text = "Edit Customer";
-            };
-
-            ////save
-            saveBtn.Click += delegate
-            {
-                SaveEvent?.Invoke(this, EventArgs.Empty);
-                if (isSuccessful)
-                {
-                    tabControl1.TabPages.Remove(customerDetails);
-                    tabControl1.TabPages.Add(customersListTab);
-                }
-                MessageBox.Show(Message);
-            };
-
-            ////cancel
-            cancelBtn.Click += delegate
-            {
-                CancelEvent?.Invoke(this, EventArgs.Empty);
-                tabControl1.TabPages.Remove(customerDetails);
-                tabControl1.TabPages.Add(customersListTab);
-            };
-
-            //delete
-            deleteBtn.Click += delegate
-            {
-                var result = MessageBox.Show("Are you sure ypu want to delete the selected item?", "Warning", MessageBoxButtons.YesNo, MessageBoxIcon.Warning);
-                if (result == DialogResult.Yes)
-                {
-                    DeleteEvent?.Invoke(this, EventArgs.Empty);
-                    MessageBox.Show(Message);
-                }
-            };
-
-        }
-        */
 
         //fields
         public string CustomerId
@@ -210,29 +148,13 @@ namespace SimpleCRM.View
 
         public void SetCustomerBindingSource(BindingSource customerList)
         {
-            customerDataTbl.DataSource = customerList;
+            baseView.SetBindingSource(customerList, customerDataTbl);
         }
 
         //singleton
-        private static CustomerView instance;
-        public static CustomerView GetInstance(Form parentContainer)
+        public static CustomersView GetInstance(Form parentContainer)
         {
-            if (instance == null || instance.IsDisposed)
-            {
-                instance = new CustomerView();
-                instance.MdiParent = parentContainer;
-                instance.FormBorderStyle = FormBorderStyle.None;
-                instance.Dock = DockStyle.Fill;
-            }
-            else
-            {
-                if (instance.WindowState == FormWindowState.Minimized)
-                {
-                    instance.WindowState = FormWindowState.Normal;
-                }
-                instance.BringToFront();
-            }
-            return instance;
+            return BaseView.GetInstance<CustomersView>(parentContainer);
         }
     }
 }

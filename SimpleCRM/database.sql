@@ -49,3 +49,53 @@ BEGIN
 END;
 
 GO
+
+CREATE TABLE Products (
+    product_id INT IDENTITY(1,1) PRIMARY KEY,
+    product_name NVARCHAR(100) NOT NULL,
+    description NVARCHAR(255) NOT NULL,
+    price DECIMAL(10, 2) NOT NULL,
+    stock_quantity INT NOT NULL
+);
+
+CREATE TABLE Users (
+    user_id INT IDENTITY(1,1) PRIMARY KEY,
+    username NVARCHAR(50) NOT NULL UNIQUE,
+    password NVARCHAR(255) NOT NULL,
+    email NVARCHAR(100) NOT NULL UNIQUE,
+    full_name NVARCHAR(100) NOT NULL
+);
+
+CREATE TABLE Orders (
+    order_id INT IDENTITY(1,1) PRIMARY KEY,
+    customer_id INT NOT NULL,
+    product_id INT NULL,  -- Allow NULL values in product_id for ON DELETE SET NULL
+    quantity INT NOT NULL,
+    total_amount DECIMAL(10, 2) NOT NULL,
+    status VARCHAR(20) NOT NULL,
+    date DATETIME DEFAULT GETDATE(),
+    CONSTRAINT FK_Customer FOREIGN KEY (customer_id) 
+        REFERENCES Customers(customer_id)
+        ON DELETE CASCADE,  -- When customer is deleted, delete associated orders
+    CONSTRAINT FK_Product FOREIGN KEY (product_id) 
+        REFERENCES Products(product_id)
+        ON DELETE SET NULL  -- When product is deleted, set product_id to NULL in orders
+);
+
+
+-- example order output
+SELECT 
+    O.order_id, 
+    O.status, 
+    O.quantity, 
+    O.total_amount, 
+    C.customer_id, 
+    C.first_name + ' ' + C.last_name AS customer_name, 
+    P.product_id, 
+    P.product_name, 
+    P.price AS product_price,
+    O.date AS order_date
+FROM Orders O
+JOIN Customers C ON O.customer_id = C.customer_id
+JOIN Products P ON O.product_id = P.product_id;
+
