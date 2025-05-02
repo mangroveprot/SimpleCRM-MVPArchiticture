@@ -1,13 +1,21 @@
 -- Create the database
-CREATE DATABASE CRM_DB;
+IF DB_ID('CRM_DB') IS NULL
+    CREATE DATABASE CRM_DB;
 GO
 
 -- Use the database
 USE CRM_DB;
 GO
 
+-- Drop existing tables if re-running the script
+IF OBJECT_ID('Orders', 'U') IS NOT NULL DROP TABLE Orders;
+IF OBJECT_ID('Users', 'U') IS NOT NULL DROP TABLE Users;
+IF OBJECT_ID('Products', 'U') IS NOT NULL DROP TABLE Products;
+IF OBJECT_ID('Customers', 'U') IS NOT NULL DROP TABLE Customers;
+GO
+
 -- Create the customers table
-CREATE TABLE customers (
+CREATE TABLE Customers (
     customer_id INT IDENTITY(1,1) PRIMARY KEY,
     first_name NVARCHAR(50) NOT NULL,
     middle_name NVARCHAR(50),
@@ -17,39 +25,9 @@ CREATE TABLE customers (
     phone_number NVARCHAR(15),
     created_at DATETIME DEFAULT GETDATE()
 );
-
 GO
 
--- Insert 100 sample rows into the customers table
-DECLARE @i INT = 1;
-
-WHILE @i <= 100
-BEGIN
-    INSERT INTO customers (
-        first_name,
-        middle_name,
-        last_name,
-        suffix,
-        email,
-        phone_number
-    )
-    VALUES (
-        CONCAT('FirstName', @i),
-        CONCAT('Middle', @i),
-        CONCAT('LastName', @i),
-        CASE WHEN @i % 4 = 0 THEN 'Jr.' 
-             WHEN @i % 4 = 1 THEN 'Sr.' 
-             WHEN @i % 4 = 2 THEN 'II'
-             ELSE NULL END,
-        CONCAT('user', @i, '@example.com'),
-        CONCAT('555-000-', RIGHT('0000' + CAST(@i AS VARCHAR), 4))
-    );
-
-    SET @i = @i + 1;
-END;
-
-GO
-
+-- Create the products table
 CREATE TABLE Products (
     product_id INT IDENTITY(1,1) PRIMARY KEY,
     product_name NVARCHAR(100) NOT NULL,
@@ -57,7 +35,9 @@ CREATE TABLE Products (
     price DECIMAL(10, 2) NOT NULL,
     stock_quantity INT NOT NULL
 );
+GO
 
+-- Create the users table
 CREATE TABLE Users (
     user_id INT IDENTITY(1,1) PRIMARY KEY,
     username NVARCHAR(50) NOT NULL UNIQUE,
@@ -65,25 +45,27 @@ CREATE TABLE Users (
     email NVARCHAR(100) NOT NULL UNIQUE,
     full_name NVARCHAR(100) NOT NULL
 );
+GO
 
+-- Create the orders table
 CREATE TABLE Orders (
     order_id INT IDENTITY(1,1) PRIMARY KEY,
     customer_id INT NOT NULL,
-    product_id INT NULL,  -- Allow NULL values in product_id for ON DELETE SET NULL
+    product_id INT NULL,
     quantity INT NOT NULL,
     total_amount DECIMAL(10, 2) NOT NULL,
     status VARCHAR(20) NOT NULL,
     date DATETIME DEFAULT GETDATE(),
     CONSTRAINT FK_Customer FOREIGN KEY (customer_id) 
         REFERENCES Customers(customer_id)
-        ON DELETE CASCADE,  -- When customer is deleted, delete associated orders
+        ON DELETE CASCADE,
     CONSTRAINT FK_Product FOREIGN KEY (product_id) 
         REFERENCES Products(product_id)
-        ON DELETE SET NULL  -- When product is deleted, set product_id to NULL in orders
+        ON DELETE SET NULL
 );
+GO
 
-
--- example order output
+-- Sample order output query
 SELECT 
     O.order_id, 
     O.status, 
@@ -97,5 +79,5 @@ SELECT
     O.date AS order_date
 FROM Orders O
 JOIN Customers C ON O.customer_id = C.customer_id
-JOIN Products P ON O.product_id = P.product_id;
-
+LEFT JOIN Products P ON O.product_id = P.product_id;
+GO

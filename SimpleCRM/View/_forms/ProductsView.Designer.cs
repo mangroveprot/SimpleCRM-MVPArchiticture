@@ -32,8 +32,8 @@
             productHeader = new Label();
             tabControl1 = new TabControl();
             productsListTab = new TabPage();
-            searchField = new TextBox();
             searchBtn = new Button();
+            searchField = new TextBox();
             productsDataTbl = new DataGridView();
             btnDelete = new Button();
             btnEdit = new Button();
@@ -95,8 +95,8 @@
             // 
             // productsListTab
             // 
-            productsListTab.Controls.Add(searchField);
             productsListTab.Controls.Add(searchBtn);
+            productsListTab.Controls.Add(searchField);
             productsListTab.Controls.Add(productsDataTbl);
             productsListTab.Controls.Add(btnDelete);
             productsListTab.Controls.Add(btnEdit);
@@ -112,6 +112,16 @@
             productsListTab.Text = "Products";
             productsListTab.UseVisualStyleBackColor = true;
             // 
+            // searchBtn
+            // 
+            searchBtn.Anchor = AnchorStyles.Right;
+            searchBtn.Location = new Point(669, 28);
+            searchBtn.Name = "searchBtn";
+            searchBtn.Size = new Size(94, 29);
+            searchBtn.TabIndex = 13;
+            searchBtn.Text = "Search";
+            searchBtn.UseVisualStyleBackColor = true;
+            // 
             // searchField
             // 
             searchField.Anchor = AnchorStyles.Top | AnchorStyles.Left | AnchorStyles.Right;
@@ -119,16 +129,6 @@
             searchField.Name = "searchField";
             searchField.Size = new Size(646, 27);
             searchField.TabIndex = 12;
-            // 
-            // searchBtn
-            // 
-            searchBtn.Anchor = AnchorStyles.Top | AnchorStyles.Right;
-            searchBtn.Location = new Point(660, 28);
-            searchBtn.Name = "searchBtn";
-            searchBtn.Size = new Size(94, 29);
-            searchBtn.TabIndex = 11;
-            searchBtn.Text = "Search";
-            searchBtn.UseVisualStyleBackColor = true;
             // 
             // productsDataTbl
             // 

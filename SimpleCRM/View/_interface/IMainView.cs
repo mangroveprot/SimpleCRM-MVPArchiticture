@@ -12,5 +12,6 @@ namespace SimpleCRM.View._interface
         event EventHandler ShowCustomerView;
         event EventHandler ShowProductView;
         event EventHandler ShowOrderView;
+        event EventHandler LogoutEvent;
     }
 }

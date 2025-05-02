@@ -16,7 +16,6 @@ namespace SimpleCRM.Models._models
         private DateTime date;
 
         // Properties
-
         [DisplayName("Order ID")]
         public int OrderId
         {

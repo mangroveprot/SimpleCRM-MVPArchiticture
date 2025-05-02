@@ -22,14 +22,37 @@ namespace SimpleCRM.Presentor.Presenter
         {
             this.mainView = mainView;
             SqlConnectionString = sqlConnectionString;
-
             //subsribe to the viewer
             this.mainView.ShowUserView += ShowUserView;
             this.mainView.ShowCustomerView += ShowCustomerView;
             this.mainView.ShowProductView += ShowProductView;
-            this.mainView.ShowUserView += ShowOrderView;
+            this.mainView.ShowOrderView += ShowOrderView;
+            this.mainView.LogoutEvent += OnLogout();
         }
 
+        private EventHandler OnLogout()
+        {
+            return (sender, e) =>
+            {
+                var result = MessageBox.Show(
+                    "Are you sure you want to logout?",
+                    "Warning",
+                    MessageBoxButtons.YesNo,
+                    MessageBoxIcon.Warning);
+
+                if (result == DialogResult.Yes)
+                {
+                    var sessionPath = Path.Combine(AppDomain.CurrentDomain.BaseDirectory, "session.json");
+
+                    if (File.Exists(sessionPath))
+                    {
+                        File.Delete(sessionPath);
+                    }
+
+                    Application.Restart();
+                }
+            };
+        }
 
         //order
         private void ShowOrderView(object? sender, EventArgs e)

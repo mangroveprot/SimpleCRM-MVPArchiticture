@@ -101,13 +101,14 @@
             productHeader.Font = new Font("Segoe UI", 15F);
             productHeader.Location = new Point(35, 38);
             productHeader.Name = "productHeader";
-            productHeader.Size = new Size(82, 35);
+            productHeader.Size = new Size(91, 35);
             productHeader.TabIndex = 0;
-            productHeader.Text = "Oders";
+            productHeader.Text = "Orders";
             productHeader.TextAlign = ContentAlignment.MiddleCenter;
             // 
             // tabControl1
             // 
+            tabControl1.Anchor = AnchorStyles.Top | AnchorStyles.Bottom | AnchorStyles.Left | AnchorStyles.Right;
             tabControl1.Controls.Add(ordersListTab);
             tabControl1.Controls.Add(orderDetails);
             tabControl1.Location = new Point(2, 109);
@@ -174,7 +175,7 @@
             // 
             // searchBtn
             // 
-            searchBtn.Anchor = AnchorStyles.Top | AnchorStyles.Right;
+            searchBtn.Anchor = AnchorStyles.Right;
             searchBtn.Location = new Point(658, 6);
             searchBtn.Name = "searchBtn";
             searchBtn.Size = new Size(94, 29);
@@ -311,7 +312,6 @@
             // 
             txt_productId.Location = new Point(567, 31);
             txt_productId.Name = "txt_productId";
-            txt_productId.ReadOnly = true;
             txt_productId.Size = new Size(257, 27);
             txt_productId.TabIndex = 7;
             // 
@@ -329,7 +329,6 @@
             // 
             txt_customerId.Location = new Point(283, 31);
             txt_customerId.Name = "txt_customerId";
-            txt_customerId.ReadOnly = true;
             txt_customerId.Size = new Size(257, 27);
             txt_customerId.TabIndex = 5;
             // 

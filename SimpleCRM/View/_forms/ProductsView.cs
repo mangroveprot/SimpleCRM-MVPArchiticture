@@ -38,16 +38,16 @@ namespace SimpleCRM.View._forms
             baseView = new BaseView(
                         searchBtn,
                         searchField,
-                        addNewBtn,
-                        editBtn,
+                        btnAddNew,
+                        btnEdit,
                         saveBtn,
                         cancelBtn,
-                        deleteBtn,
+                        btnDelete,
                         tabControl1,
                         productsListTab,
                         productDetails,
-                        addModeTitle: "Add New Customer",
-                        editModeTitle: "Edit Customer"
+                        addModeTitle: "Add New product",
+                        editModeTitle: "Edit product"
                      );
 
             WireUpBaseViewEvents();
