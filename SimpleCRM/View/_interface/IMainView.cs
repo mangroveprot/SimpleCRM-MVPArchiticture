@@ -8,6 +8,7 @@ namespace SimpleCRM.View._interface
 {
     public interface IMainView
     {
+        event EventHandler SessionLogin;
         event EventHandler ShowUserView;
         event EventHandler ShowCustomerView;
         event EventHandler ShowProductView;

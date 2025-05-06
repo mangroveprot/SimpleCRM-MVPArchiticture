@@ -30,15 +30,19 @@
         {
             customersHeader = new Label();
             panel1 = new Panel();
+            customerDataTbl = new DataGridView();
             tabControl1 = new TabControl();
             customersListTab = new TabPage();
-            customerDataTbl = new DataGridView();
-            searchField = new TextBox();
-            label1 = new Label();
-            searchBtn = new Button();
-            deleteBtn = new Button();
+            tableLayoutPanel1 = new TableLayoutPanel();
+            panel3 = new Panel();
             editBtn = new Button();
             addNewBtn = new Button();
+            deleteBtn = new Button();
+            label1 = new Label();
+            panel2 = new Panel();
+            panel4 = new Panel();
+            searchField = new TextBox();
+            searchBtn = new Button();
             customerDetails = new TabPage();
             cancelBtn = new Button();
             saveBtn = new Button();
@@ -58,9 +62,12 @@
             label2 = new Label();
             backgroundWorker1 = new System.ComponentModel.BackgroundWorker();
             panel1.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)customerDataTbl).BeginInit();
             tabControl1.SuspendLayout();
             customersListTab.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)customerDataTbl).BeginInit();
+            tableLayoutPanel1.SuspendLayout();
+            panel3.SuspendLayout();
+            panel2.SuspendLayout();
             customerDetails.SuspendLayout();
             SuspendLayout();
             // 
@@ -85,6 +92,18 @@
             panel1.Size = new Size(858, 105);
             panel1.TabIndex = 1;
             // 
+            // customerDataTbl
+            // 
+            customerDataTbl.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.Fill;
+            customerDataTbl.AutoSizeRowsMode = DataGridViewAutoSizeRowsMode.AllCells;
+            customerDataTbl.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            customerDataTbl.Dock = DockStyle.Fill;
+            customerDataTbl.Location = new Point(3, 3);
+            customerDataTbl.Name = "customerDataTbl";
+            customerDataTbl.RowHeadersWidth = 51;
+            customerDataTbl.Size = new Size(716, 257);
+            customerDataTbl.TabIndex = 5;
+            // 
             // tabControl1
             // 
             tabControl1.Anchor = AnchorStyles.Top | AnchorStyles.Bottom | AnchorStyles.Left | AnchorStyles.Right;
@@ -98,13 +117,9 @@
             // 
             // customersListTab
             // 
-            customersListTab.Controls.Add(customerDataTbl);
-            customersListTab.Controls.Add(searchField);
+            customersListTab.Controls.Add(tableLayoutPanel1);
             customersListTab.Controls.Add(label1);
-            customersListTab.Controls.Add(searchBtn);
-            customersListTab.Controls.Add(deleteBtn);
-            customersListTab.Controls.Add(editBtn);
-            customersListTab.Controls.Add(addNewBtn);
+            customersListTab.Controls.Add(panel2);
             customersListTab.Location = new Point(4, 29);
             customersListTab.Name = "customersListTab";
             customersListTab.Padding = new Padding(3);
@@ -113,23 +128,62 @@
             customersListTab.Text = "Customers";
             customersListTab.UseVisualStyleBackColor = true;
             // 
-            // customerDataTbl
+            // tableLayoutPanel1
             // 
-            customerDataTbl.Anchor = AnchorStyles.Top | AnchorStyles.Bottom | AnchorStyles.Left | AnchorStyles.Right;
-            customerDataTbl.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            customerDataTbl.Location = new Point(8, 89);
-            customerDataTbl.Name = "customerDataTbl";
-            customerDataTbl.RowHeadersWidth = 51;
-            customerDataTbl.Size = new Size(734, 209);
-            customerDataTbl.TabIndex = 5;
+            tableLayoutPanel1.Anchor = AnchorStyles.Top | AnchorStyles.Bottom | AnchorStyles.Left | AnchorStyles.Right;
+            tableLayoutPanel1.ColumnCount = 2;
+            tableLayoutPanel1.ColumnStyles.Add(new ColumnStyle(SizeType.Percent, 100F));
+            tableLayoutPanel1.ColumnStyles.Add(new ColumnStyle(SizeType.Absolute, 120F));
+            tableLayoutPanel1.Controls.Add(panel3, 1, 0);
+            tableLayoutPanel1.Controls.Add(customerDataTbl, 0, 0);
+            tableLayoutPanel1.Location = new Point(0, 85);
+            tableLayoutPanel1.Name = "tableLayoutPanel1";
+            tableLayoutPanel1.RowCount = 1;
+            tableLayoutPanel1.RowStyles.Add(new RowStyle(SizeType.Percent, 100F));
+            tableLayoutPanel1.RowStyles.Add(new RowStyle(SizeType.Absolute, 20F));
+            tableLayoutPanel1.Size = new Size(842, 263);
+            tableLayoutPanel1.TabIndex = 6;
             // 
-            // searchField
+            // panel3
             // 
-            searchField.Anchor = AnchorStyles.Top | AnchorStyles.Left | AnchorStyles.Right;
-            searchField.Location = new Point(8, 40);
-            searchField.Name = "searchField";
-            searchField.Size = new Size(646, 27);
-            searchField.TabIndex = 4;
+            panel3.Anchor = AnchorStyles.Top | AnchorStyles.Bottom | AnchorStyles.Left | AnchorStyles.Right;
+            panel3.Controls.Add(editBtn);
+            panel3.Controls.Add(addNewBtn);
+            panel3.Controls.Add(deleteBtn);
+            panel3.Location = new Point(725, 3);
+            panel3.Name = "panel3";
+            panel3.Size = new Size(114, 257);
+            panel3.TabIndex = 0;
+            // 
+            // editBtn
+            // 
+            editBtn.Anchor = AnchorStyles.Top | AnchorStyles.Right;
+            editBtn.Location = new Point(9, 25);
+            editBtn.Name = "editBtn";
+            editBtn.Size = new Size(94, 29);
+            editBtn.TabIndex = 1;
+            editBtn.Text = "Edit";
+            editBtn.UseVisualStyleBackColor = true;
+            // 
+            // addNewBtn
+            // 
+            addNewBtn.Anchor = AnchorStyles.Top | AnchorStyles.Right;
+            addNewBtn.Location = new Point(9, 163);
+            addNewBtn.Name = "addNewBtn";
+            addNewBtn.Size = new Size(94, 29);
+            addNewBtn.TabIndex = 0;
+            addNewBtn.Text = "Add New";
+            addNewBtn.UseVisualStyleBackColor = true;
+            // 
+            // deleteBtn
+            // 
+            deleteBtn.Anchor = AnchorStyles.Top | AnchorStyles.Right;
+            deleteBtn.Location = new Point(9, 91);
+            deleteBtn.Name = "deleteBtn";
+            deleteBtn.Size = new Size(94, 29);
+            deleteBtn.TabIndex = 2;
+            deleteBtn.Text = "Delete";
+            deleteBtn.UseVisualStyleBackColor = true;
             // 
             // label1
             // 
@@ -140,45 +194,41 @@
             label1.Size = new Size(0, 19);
             label1.TabIndex = 1;
             // 
+            // panel2
+            // 
+            panel2.Anchor = AnchorStyles.Top | AnchorStyles.Left | AnchorStyles.Right;
+            panel2.Controls.Add(panel4);
+            panel2.Controls.Add(searchField);
+            panel2.Controls.Add(searchBtn);
+            panel2.Location = new Point(0, 1);
+            panel2.Name = "panel2";
+            panel2.Size = new Size(748, 86);
+            panel2.TabIndex = 5;
+            // 
+            // panel4
+            // 
+            panel4.Location = new Point(0, 84);
+            panel4.Name = "panel4";
+            panel4.Size = new Size(748, 269);
+            panel4.TabIndex = 7;
+            // 
+            // searchField
+            // 
+            searchField.Anchor = AnchorStyles.Top | AnchorStyles.Left | AnchorStyles.Right;
+            searchField.Location = new Point(6, 30);
+            searchField.Name = "searchField";
+            searchField.Size = new Size(646, 27);
+            searchField.TabIndex = 4;
+            // 
             // searchBtn
             // 
             searchBtn.Anchor = AnchorStyles.Top | AnchorStyles.Right;
-            searchBtn.Location = new Point(660, 40);
+            searchBtn.Location = new Point(654, 30);
             searchBtn.Name = "searchBtn";
             searchBtn.Size = new Size(94, 29);
             searchBtn.TabIndex = 3;
             searchBtn.Text = "Search";
             searchBtn.UseVisualStyleBackColor = true;
-            // 
-            // deleteBtn
-            // 
-            deleteBtn.Anchor = AnchorStyles.Top | AnchorStyles.Right;
-            deleteBtn.Location = new Point(748, 188);
-            deleteBtn.Name = "deleteBtn";
-            deleteBtn.Size = new Size(94, 29);
-            deleteBtn.TabIndex = 2;
-            deleteBtn.Text = "Delete";
-            deleteBtn.UseVisualStyleBackColor = true;
-            // 
-            // editBtn
-            // 
-            editBtn.Anchor = AnchorStyles.Top | AnchorStyles.Right;
-            editBtn.Location = new Point(748, 140);
-            editBtn.Name = "editBtn";
-            editBtn.Size = new Size(94, 29);
-            editBtn.TabIndex = 1;
-            editBtn.Text = "Edit";
-            editBtn.UseVisualStyleBackColor = true;
-            // 
-            // addNewBtn
-            // 
-            addNewBtn.Anchor = AnchorStyles.Top | AnchorStyles.Right;
-            addNewBtn.Location = new Point(748, 91);
-            addNewBtn.Name = "addNewBtn";
-            addNewBtn.Size = new Size(94, 29);
-            addNewBtn.TabIndex = 0;
-            addNewBtn.Text = "Add New";
-            addNewBtn.UseVisualStyleBackColor = true;
             // 
             // customerDetails
             // 
@@ -213,7 +263,7 @@
             cancelBtn.Name = "cancelBtn";
             cancelBtn.Size = new Size(149, 37);
             cancelBtn.TabIndex = 15;
-            cancelBtn.Text = "Cancel";
+            cancelBtn.Text = "Back";
             cancelBtn.UseVisualStyleBackColor = true;
             // 
             // saveBtn
@@ -346,21 +396,25 @@
             label2.TabIndex = 0;
             label2.Text = "Customer ID";
             // 
-            // CustomerView
+            // CustomersView
             // 
             AutoScaleDimensions = new SizeF(8F, 20F);
             AutoScaleMode = AutoScaleMode.Font;
             ClientSize = new Size(858, 498);
             Controls.Add(tabControl1);
             Controls.Add(panel1);
-            Name = "CustomerView";
+            Name = "CustomersView";
             Text = "CustomerView";
             panel1.ResumeLayout(false);
             panel1.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)customerDataTbl).EndInit();
             tabControl1.ResumeLayout(false);
             customersListTab.ResumeLayout(false);
             customersListTab.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)customerDataTbl).EndInit();
+            tableLayoutPanel1.ResumeLayout(false);
+            panel3.ResumeLayout(false);
+            panel2.ResumeLayout(false);
+            panel2.PerformLayout();
             customerDetails.ResumeLayout(false);
             customerDetails.PerformLayout();
             ResumeLayout(false);
@@ -397,5 +451,9 @@
         private Label label8;
         private Button cancelBtn;
         private Button saveBtn;
+        private Panel panel2;
+        private Panel panel4;
+        private TableLayoutPanel tableLayoutPanel1;
+        private Panel panel3;
     }
 }

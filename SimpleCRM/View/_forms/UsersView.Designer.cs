@@ -189,7 +189,7 @@
             cancelBtn.Name = "cancelBtn";
             cancelBtn.Size = new Size(149, 37);
             cancelBtn.TabIndex = 19;
-            cancelBtn.Text = "Cancel";
+            cancelBtn.Text = "Back";
             cancelBtn.UseVisualStyleBackColor = true;
             // 
             // saveBtn

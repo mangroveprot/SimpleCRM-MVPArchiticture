@@ -23,11 +23,38 @@ namespace SimpleCRM.Presentor.Presenter
             this.mainView = mainView;
             SqlConnectionString = sqlConnectionString;
             //subsribe to the viewer
+            this.mainView.SessionLogin += OnSession;
             this.mainView.ShowUserView += ShowUserView;
             this.mainView.ShowCustomerView += ShowCustomerView;
             this.mainView.ShowProductView += ShowProductView;
             this.mainView.ShowOrderView += ShowOrderView;
             this.mainView.LogoutEvent += OnLogout();
+        }
+
+        private void OnSession(object? sender, EventArgs e)
+        {
+            var sessionPath = Path.Combine(AppDomain.CurrentDomain.BaseDirectory, "session.json");
+            if (File.Exists(sessionPath))
+            {
+                try
+                {
+                    string json = File.ReadAllText(sessionPath);
+                    var root = System.Text.Json.JsonDocument.Parse(json).RootElement;
+
+                    var session = new LoginSessionModel
+                    {
+                        UserId = root.GetProperty("UserId").GetInt32(),
+                        Username = root.GetProperty("Username").GetString() ?? "",
+                        Role = root.GetProperty("Role").GetString() ?? ""
+                    };
+
+                    SessionModelHolder.Session = session;
+                }
+                catch
+                {
+                    SessionModelHolder.Session = null;
+                }
+            }
         }
 
         private EventHandler OnLogout()

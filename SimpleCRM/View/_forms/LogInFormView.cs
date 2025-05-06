@@ -7,6 +7,10 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using SimpleCRM._Repositories;
+using SimpleCRM.Models._models;
+using SimpleCRM.Models._repositories;
+using SimpleCRM.Presentor._presenter;
 using SimpleCRM.Presentor.Presenter;
 using SimpleCRM.View._interface;
 
@@ -43,8 +47,16 @@ namespace SimpleCRM.View._forms
                     MessageBox.Show(Message);
                 }
             };
+            btnSignup.Click += delegate
+            {
+                ISignUpView signupView = new SignUpFormView(SqlConnectionString);
+                IBaseRepository<UserModel> userRepository = new UserRepository(SqlConnectionString);
+                new SignupPresenter(signupView, userRepository);
+                Form startForm = (Form)signupView;
+                startForm.Show();
+                this.Hide();
+            };
         }
-
         public string Username
         {
             get { return txt_username.Text; }
@@ -71,5 +83,6 @@ namespace SimpleCRM.View._forms
 
         public event EventHandler LoginEvent;
         public event EventHandler CancelEvent;
+        public event EventHandler ShowSignUpView;
     }
 }

@@ -34,12 +34,15 @@
             productHeader = new Label();
             tabControl1 = new TabControl();
             ordersListTab = new TabPage();
+            panel3 = new Panel();
+            searchField = new TextBox();
+            searchBtn = new Button();
+            tableLayoutPanel1 = new TableLayoutPanel();
             orderDataTbl = new DataGridView();
+            panel2 = new Panel();
+            btnAddNew = new Button();
             btnDelete = new Button();
             btnEdit = new Button();
-            btnAddNew = new Button();
-            searchBtn = new Button();
-            searchField = new TextBox();
             orderDetails = new TabPage();
             txt_status = new ComboBox();
             label5 = new Label();
@@ -49,8 +52,6 @@
             saveBtn = new Button();
             txt_qty = new TextBox();
             label8 = new Label();
-            txt_productPrice = new TextBox();
-            label7 = new Label();
             txt_productId = new TextBox();
             label2 = new Label();
             txt_customerId = new TextBox();
@@ -60,7 +61,10 @@
             panel1.SuspendLayout();
             tabControl1.SuspendLayout();
             ordersListTab.SuspendLayout();
+            panel3.SuspendLayout();
+            tableLayoutPanel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)orderDataTbl).BeginInit();
+            panel2.SuspendLayout();
             orderDetails.SuspendLayout();
             SuspendLayout();
             // 
@@ -119,12 +123,8 @@
             // 
             // ordersListTab
             // 
-            ordersListTab.Controls.Add(orderDataTbl);
-            ordersListTab.Controls.Add(btnDelete);
-            ordersListTab.Controls.Add(btnEdit);
-            ordersListTab.Controls.Add(btnAddNew);
-            ordersListTab.Controls.Add(searchBtn);
-            ordersListTab.Controls.Add(searchField);
+            ordersListTab.Controls.Add(panel3);
+            ordersListTab.Controls.Add(tableLayoutPanel1);
             ordersListTab.Location = new Point(4, 29);
             ordersListTab.Name = "ordersListTab";
             ordersListTab.Padding = new Padding(3);
@@ -133,20 +133,86 @@
             ordersListTab.Text = "Orders";
             ordersListTab.UseVisualStyleBackColor = true;
             // 
+            // panel3
+            // 
+            panel3.Controls.Add(searchField);
+            panel3.Controls.Add(searchBtn);
+            panel3.Dock = DockStyle.Top;
+            panel3.Location = new Point(3, 3);
+            panel3.Name = "panel3";
+            panel3.Size = new Size(819, 55);
+            panel3.TabIndex = 1;
+            // 
+            // searchField
+            // 
+            searchField.Anchor = AnchorStyles.Top | AnchorStyles.Left | AnchorStyles.Right;
+            searchField.Location = new Point(0, 14);
+            searchField.Name = "searchField";
+            searchField.Size = new Size(646, 27);
+            searchField.TabIndex = 13;
+            // 
+            // searchBtn
+            // 
+            searchBtn.Anchor = AnchorStyles.Right;
+            searchBtn.Location = new Point(652, 14);
+            searchBtn.Name = "searchBtn";
+            searchBtn.Size = new Size(94, 29);
+            searchBtn.TabIndex = 14;
+            searchBtn.Text = "Search";
+            searchBtn.UseVisualStyleBackColor = true;
+            // 
+            // tableLayoutPanel1
+            // 
+            tableLayoutPanel1.Anchor = AnchorStyles.Top | AnchorStyles.Bottom | AnchorStyles.Left | AnchorStyles.Right;
+            tableLayoutPanel1.ColumnCount = 2;
+            tableLayoutPanel1.ColumnStyles.Add(new ColumnStyle(SizeType.Percent, 100F));
+            tableLayoutPanel1.ColumnStyles.Add(new ColumnStyle(SizeType.Absolute, 120F));
+            tableLayoutPanel1.Controls.Add(orderDataTbl, 0, 0);
+            tableLayoutPanel1.Controls.Add(panel2, 1, 0);
+            tableLayoutPanel1.Location = new Point(-4, 88);
+            tableLayoutPanel1.Name = "tableLayoutPanel1";
+            tableLayoutPanel1.RowCount = 1;
+            tableLayoutPanel1.RowStyles.Add(new RowStyle(SizeType.Percent, 100F));
+            tableLayoutPanel1.Size = new Size(829, 387);
+            tableLayoutPanel1.TabIndex = 0;
+            // 
             // orderDataTbl
             // 
-            orderDataTbl.Anchor = AnchorStyles.Top | AnchorStyles.Bottom | AnchorStyles.Left | AnchorStyles.Right;
+            orderDataTbl.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.Fill;
+            orderDataTbl.AutoSizeRowsMode = DataGridViewAutoSizeRowsMode.AllCells;
             orderDataTbl.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            orderDataTbl.Location = new Point(6, 41);
+            orderDataTbl.Dock = DockStyle.Fill;
+            orderDataTbl.Location = new Point(3, 3);
             orderDataTbl.Name = "orderDataTbl";
             orderDataTbl.RowHeadersWidth = 51;
-            orderDataTbl.Size = new Size(713, 427);
+            orderDataTbl.Size = new Size(703, 381);
             orderDataTbl.TabIndex = 18;
+            // 
+            // panel2
+            // 
+            panel2.Anchor = AnchorStyles.Top | AnchorStyles.Bottom | AnchorStyles.Right;
+            panel2.Controls.Add(btnAddNew);
+            panel2.Controls.Add(btnDelete);
+            panel2.Controls.Add(btnEdit);
+            panel2.Location = new Point(712, 3);
+            panel2.Name = "panel2";
+            panel2.Size = new Size(114, 381);
+            panel2.TabIndex = 19;
+            // 
+            // btnAddNew
+            // 
+            btnAddNew.Anchor = AnchorStyles.Top | AnchorStyles.Right;
+            btnAddNew.Location = new Point(8, 67);
+            btnAddNew.Name = "btnAddNew";
+            btnAddNew.Size = new Size(94, 29);
+            btnAddNew.TabIndex = 15;
+            btnAddNew.Text = "Add New";
+            btnAddNew.UseVisualStyleBackColor = true;
             // 
             // btnDelete
             // 
             btnDelete.Anchor = AnchorStyles.Top | AnchorStyles.Right;
-            btnDelete.Location = new Point(725, 151);
+            btnDelete.Location = new Point(8, 164);
             btnDelete.Name = "btnDelete";
             btnDelete.Size = new Size(94, 29);
             btnDelete.TabIndex = 17;
@@ -156,40 +222,12 @@
             // btnEdit
             // 
             btnEdit.Anchor = AnchorStyles.Top | AnchorStyles.Right;
-            btnEdit.Location = new Point(725, 103);
+            btnEdit.Location = new Point(8, 116);
             btnEdit.Name = "btnEdit";
             btnEdit.Size = new Size(94, 29);
             btnEdit.TabIndex = 16;
             btnEdit.Text = "Edit";
             btnEdit.UseVisualStyleBackColor = true;
-            // 
-            // btnAddNew
-            // 
-            btnAddNew.Anchor = AnchorStyles.Top | AnchorStyles.Right;
-            btnAddNew.Location = new Point(725, 54);
-            btnAddNew.Name = "btnAddNew";
-            btnAddNew.Size = new Size(94, 29);
-            btnAddNew.TabIndex = 15;
-            btnAddNew.Text = "Add New";
-            btnAddNew.UseVisualStyleBackColor = true;
-            // 
-            // searchBtn
-            // 
-            searchBtn.Anchor = AnchorStyles.Right;
-            searchBtn.Location = new Point(658, 6);
-            searchBtn.Name = "searchBtn";
-            searchBtn.Size = new Size(94, 29);
-            searchBtn.TabIndex = 14;
-            searchBtn.Text = "Search";
-            searchBtn.UseVisualStyleBackColor = true;
-            // 
-            // searchField
-            // 
-            searchField.Anchor = AnchorStyles.Top | AnchorStyles.Left | AnchorStyles.Right;
-            searchField.Location = new Point(6, 6);
-            searchField.Name = "searchField";
-            searchField.Size = new Size(646, 27);
-            searchField.TabIndex = 13;
             // 
             // orderDetails
             // 
@@ -201,8 +239,6 @@
             orderDetails.Controls.Add(saveBtn);
             orderDetails.Controls.Add(txt_qty);
             orderDetails.Controls.Add(label8);
-            orderDetails.Controls.Add(txt_productPrice);
-            orderDetails.Controls.Add(label7);
             orderDetails.Controls.Add(txt_productId);
             orderDetails.Controls.Add(label2);
             orderDetails.Controls.Add(txt_customerId);
@@ -260,7 +296,7 @@
             cancelBtn.Name = "cancelBtn";
             cancelBtn.Size = new Size(149, 37);
             cancelBtn.TabIndex = 19;
-            cancelBtn.Text = "Cancel";
+            cancelBtn.Text = "Back";
             cancelBtn.UseVisualStyleBackColor = true;
             // 
             // saveBtn
@@ -275,7 +311,7 @@
             // 
             // txt_qty
             // 
-            txt_qty.Location = new Point(359, 104);
+            txt_qty.Location = new Point(15, 92);
             txt_qty.Name = "txt_qty";
             txt_qty.Size = new Size(379, 27);
             txt_qty.TabIndex = 17;
@@ -284,29 +320,11 @@
             // 
             label8.AutoSize = true;
             label8.Font = new Font("Segoe UI", 12F);
-            label8.Location = new Point(350, 73);
+            label8.Location = new Point(6, 61);
             label8.Name = "label8";
             label8.Size = new Size(88, 28);
             label8.TabIndex = 16;
             label8.Text = "Quantity";
-            // 
-            // txt_productPrice
-            // 
-            txt_productPrice.Location = new Point(4, 104);
-            txt_productPrice.Name = "txt_productPrice";
-            txt_productPrice.PlaceholderText = "Enter price here";
-            txt_productPrice.Size = new Size(294, 27);
-            txt_productPrice.TabIndex = 15;
-            // 
-            // label7
-            // 
-            label7.AutoSize = true;
-            label7.Font = new Font("Segoe UI", 12F);
-            label7.Location = new Point(3, 73);
-            label7.Name = "label7";
-            label7.Size = new Size(54, 28);
-            label7.TabIndex = 14;
-            label7.Text = "Price";
             // 
             // txt_productId
             // 
@@ -373,8 +391,11 @@
             panel1.PerformLayout();
             tabControl1.ResumeLayout(false);
             ordersListTab.ResumeLayout(false);
-            ordersListTab.PerformLayout();
+            panel3.ResumeLayout(false);
+            panel3.PerformLayout();
+            tableLayoutPanel1.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)orderDataTbl).EndInit();
+            panel2.ResumeLayout(false);
             orderDetails.ResumeLayout(false);
             orderDetails.PerformLayout();
             ResumeLayout(false);
@@ -403,13 +424,14 @@
         private Label orderDateLabel;
         private TextBox txt_qty;
         private Label label8;
-        private TextBox txt_productPrice;
-        private Label label7;
         private Button cancelBtn;
         private Button saveBtn;
         private TextBox txt_totalAmount;
         private Label label4;
         private Label label5;
         private ComboBox txt_status;
+        private TableLayoutPanel tableLayoutPanel1;
+        private Panel panel2;
+        private Panel panel3;
     }
 }

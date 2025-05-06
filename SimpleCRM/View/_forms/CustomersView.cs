@@ -156,5 +156,6 @@ namespace SimpleCRM.View
         {
             return BaseView.GetInstance<CustomersView>(parentContainer);
         }
+
     }
 }

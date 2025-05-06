@@ -4,8 +4,10 @@ using System.Linq;
 using System.Reflection;
 using System.Text;
 using System.Threading.Tasks;
+using SimpleCRM._Repositories;
 using SimpleCRM.Models._models;
 using SimpleCRM.Models._repositories;
+using SimpleCRM.View._forms;
 using SimpleCRM.View._interface;
 using static System.Windows.Forms.VisualStyles.VisualStyleElement;
 
@@ -23,7 +25,6 @@ namespace SimpleCRM.Presentor._presenter
 
             this.view.LoginEvent += OnLogin;
         }
-
         private void OnLogin(object? sender, EventArgs e)
         {
             string _username = view.Username;

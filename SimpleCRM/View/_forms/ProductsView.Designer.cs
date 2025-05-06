@@ -32,8 +32,9 @@
             productHeader = new Label();
             tabControl1 = new TabControl();
             productsListTab = new TabPage();
-            searchBtn = new Button();
+            panel2 = new Panel();
             searchField = new TextBox();
+            searchBtn = new Button();
             productsDataTbl = new DataGridView();
             btnDelete = new Button();
             btnEdit = new Button();
@@ -57,6 +58,7 @@
             panel1.SuspendLayout();
             tabControl1.SuspendLayout();
             productsListTab.SuspendLayout();
+            panel2.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)productsDataTbl).BeginInit();
             productDetails.SuspendLayout();
             SuspendLayout();
@@ -95,8 +97,7 @@
             // 
             // productsListTab
             // 
-            productsListTab.Controls.Add(searchBtn);
-            productsListTab.Controls.Add(searchField);
+            productsListTab.Controls.Add(panel2);
             productsListTab.Controls.Add(productsDataTbl);
             productsListTab.Controls.Add(btnDelete);
             productsListTab.Controls.Add(btnEdit);
@@ -109,26 +110,35 @@
             productsListTab.Padding = new Padding(3);
             productsListTab.Size = new Size(850, 544);
             productsListTab.TabIndex = 0;
-            productsListTab.Text = "Products";
+            productsListTab.Text = "Product";
             productsListTab.UseVisualStyleBackColor = true;
+            // 
+            // panel2
+            // 
+            panel2.Controls.Add(searchField);
+            panel2.Controls.Add(searchBtn);
+            panel2.Location = new Point(-3, 3);
+            panel2.Name = "panel2";
+            panel2.Size = new Size(857, 65);
+            panel2.TabIndex = 14;
+            // 
+            // searchField
+            // 
+            searchField.Anchor = AnchorStyles.Top | AnchorStyles.Left | AnchorStyles.Right;
+            searchField.Location = new Point(11, 19);
+            searchField.Name = "searchField";
+            searchField.Size = new Size(646, 27);
+            searchField.TabIndex = 12;
             // 
             // searchBtn
             // 
             searchBtn.Anchor = AnchorStyles.Right;
-            searchBtn.Location = new Point(669, 28);
+            searchBtn.Location = new Point(663, 19);
             searchBtn.Name = "searchBtn";
             searchBtn.Size = new Size(94, 29);
             searchBtn.TabIndex = 13;
             searchBtn.Text = "Search";
             searchBtn.UseVisualStyleBackColor = true;
-            // 
-            // searchField
-            // 
-            searchField.Anchor = AnchorStyles.Top | AnchorStyles.Left | AnchorStyles.Right;
-            searchField.Location = new Point(8, 28);
-            searchField.Name = "searchField";
-            searchField.Size = new Size(646, 27);
-            searchField.TabIndex = 12;
             // 
             // productsDataTbl
             // 
@@ -247,7 +257,7 @@
             cancelBtn.Name = "cancelBtn";
             cancelBtn.Size = new Size(149, 37);
             cancelBtn.TabIndex = 15;
-            cancelBtn.Text = "Cancel";
+            cancelBtn.Text = "Back";
             cancelBtn.UseVisualStyleBackColor = true;
             // 
             // saveBtn
@@ -343,7 +353,8 @@
             panel1.PerformLayout();
             tabControl1.ResumeLayout(false);
             productsListTab.ResumeLayout(false);
-            productsListTab.PerformLayout();
+            panel2.ResumeLayout(false);
+            panel2.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)productsDataTbl).EndInit();
             productDetails.ResumeLayout(false);
             productDetails.PerformLayout();
@@ -378,5 +389,6 @@
         private Button addNewBtn;
         private TextBox searchField;
         private Button searchBtn;
+        private Panel panel2;
     }
 }

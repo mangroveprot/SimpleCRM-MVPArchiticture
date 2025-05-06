@@ -22,8 +22,6 @@ namespace SimpleCRM.View._forms
         public OrdersView()
         {
             InitializeComponent();
-            TextBoxInputFilter.AllowOnlyDecimal(txt_productPrice);
-            TextBoxInputFilter.AllowOnlyInteger(txt_productPrice);
             tabControl1.TabPages.Remove(orderDetails);
             HideDateAndTime(false);
 
